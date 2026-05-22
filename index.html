@@ -99,13 +99,23 @@ async function iniciarCamara(){
   try{
 
     const stream = await navigator.mediaDevices.getUserMedia({
-      video:{
-        facingMode:{
-          ideal:'environment'
-        }
-      },
-      audio:false
-    });
+  video:{
+    facingMode:{
+      ideal:'environment'
+    },
+
+    width:{
+      ideal:1280
+    },
+
+    height:{
+      ideal:720
+    }
+
+  },
+
+  audio:false
+});
 
     video.srcObject = stream;
 
@@ -158,7 +168,7 @@ btnSnap.addEventListener('click', async ()=>{
     // BASE64
 
     const base64Image = canvas
-      .toDataURL('image/jpeg',0.9)
+      .toDataURL('image/jpeg',0.5)
       .split(',')[1];
 
 
